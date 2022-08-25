@@ -1,5 +1,8 @@
+const templateService = require('../services/templateService');
+
 const getAllTemplates = (req, res) => {
-    res.send("Get all templates");
+    const allTemplates = templateService.getAllTemplates()
+    res.send(allTemplates);
 };
 
 const getOneTemplate = (req, res) => {

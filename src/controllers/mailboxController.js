@@ -1,5 +1,8 @@
+const mailboxService = require('../services/mailboxService');
+
 const getAllMailboxes = (req, res) => {
-    res.send("Get all mailboxes");
+    const allMailboxes = mailboxService.getAllMailboxes();
+    res.send(allMailboxes);
 };
 
 const getOneMailbox = (req, res) => {

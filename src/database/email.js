@@ -1,11 +1,21 @@
-const DB = require('./db.json');
+const DB = require('../models');
 
-const getAllEmails = () => DB.emails;
 
-const getOneEmail = () => DB.emails;
-const createNewEmail = () => DB.emails;
-const updateOneEmail = () => DB.emails;
-const deleteOneEmail = () => DB.emails;
+const getAllEmails = () => {
+        return DB.emails;
+}
+const getOneEmail = () => {
+        return DB.emails;
+}
+const createNewEmail = () => {
+        return DB.emails;
+}
+const updateOneEmail = () => {
+        return DB.emails;
+}
+const deleteOneEmail = () => {
+        return DB.emails;
+}
 
 module.exports =
     {

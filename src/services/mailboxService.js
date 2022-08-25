@@ -1,21 +1,23 @@
+const Mailboxes = require('../database/mailbox');
+
 const getAllMailboxes = () => {
-    return;
+    return Mailboxes.getAllMailboxes();
 };
 
 const getOneMailbox = () => {
-    return;
+    return Mailboxes.getOneMailbox();
 };
 
 const createNewMailbox = () => {
-    return;
+    return Mailboxes.createNewMailbox();
 };
 
 const updateOneMailbox = () => {
-    return;
+    return Mailboxes.updateOneMailbox();
 };
 
 const deleteOneMailbox = () => {
-    return;
+    return Mailboxes.deleteOneMailbox();
 };
 
 module.exports = {

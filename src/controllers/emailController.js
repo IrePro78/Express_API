@@ -3,7 +3,8 @@ const emailService = require('../services/emailService')
 
 const getAllEmails = (req, res) => {
     const allEmails = emailService.getAllEmails();
-    res.send("Get all emails");
+    res.send(allEmails);
+
 };
 
 const getOneEmail = (req, res) => {

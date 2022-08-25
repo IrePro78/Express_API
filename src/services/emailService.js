@@ -1,5 +1,6 @@
 const Email = require('../database/email')
 
+
 const getAllEmails = () => {
     return Email.getAllEmails();
 };
