@@ -1,4 +1,4 @@
-const Email = require('../database/email')
+const Email = require('../database/email');
 
 
 const getAllEmails = () => {

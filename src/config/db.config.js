@@ -4,7 +4,7 @@ module.exports = {
     USER: process.env.DB_USER,
     PASSWORD: process.env.DB_PASS,
     dialect: 'mariadb',
-    port: process.env.PORT,
+    port: 3307,
     connectionLimit: 10,
     pool: {
         max: 5,

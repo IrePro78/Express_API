@@ -1,6 +1,5 @@
 const emailService = require('../services/emailService')
 
-
 const getAllEmails = (req, res) => {
     const allEmails = emailService.getAllEmails();
     res.send(allEmails);

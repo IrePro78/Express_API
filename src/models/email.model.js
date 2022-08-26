@@ -1,36 +1,37 @@
+const { DataTypes, Sequelize } = require("sequelize");
 
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize) => {
     const Email = sequelize.define("email", {
         id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
             primaryKey: true,
-            type: Sequelize.UUID,
-            defaultValue: Sequelize.UUIDV4
         },
         mailbox: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         template: {
-            type: Sequelize.BOOLEAN
+            type: DataTypes.STRING
         },
         to: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         cc: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         bcc: {
-            type: Sequelize.BOOLEAN
+            type: DataTypes.STRING
         },
         reply_to: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         sent_date: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         date: {
-            type: Sequelize.BOOLEAN
+            type: DataTypes.STRING
         }
     });
     return Email;
 };
-
