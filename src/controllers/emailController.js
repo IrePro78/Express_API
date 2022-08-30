@@ -1,29 +1,29 @@
 const emailService = require('../services/emailService')
 
-const getAllEmails = (req, res) => {
-    const allEmails = emailService.getAllEmails();
+const getAllEmails = async (req, res) => {
+    const allEmails = await emailService.getAllEmails();
     res.send(allEmails);
 
 };
 
-const getOneEmail = (req, res) => {
-    const email = emailService.getOneEmail();
-    res.send("Get an existing email");
+const getOneEmail = async (req, res) => {
+    const email = await emailService.getOneEmail(req, res);
+    res.send(email);
 };
 
-const createNewEmail = (req, res) => {
-    const createEmail = emailService.createNewEmail();
-    res.send("Create a new email");
+const createNewEmail = async (req, res) => {
+    const createEmail = await emailService.createNewEmail(req, res);
+    res.send(createEmail);
 };
 
-const updateOneEmail = (req, res) => {
-    const updateEmail = emailService.updateOneEmail();
-    res.send("Update an existing email");
+const updateOneEmail = async (req, res) => {
+    const updateEmail = await emailService.updateOneEmail(req, res);
+    res.send(updateEmail);
 };
 
 const deleteOneEmail = (req, res) => {
-    emailService.deleteOneEmail();
-    res.send("Delete an existing email");
+    const deletedEmail = emailService.deleteOneEmail(req, res);
+    res.status(204).send(deletedEmail);
 };
 
 module.exports = {

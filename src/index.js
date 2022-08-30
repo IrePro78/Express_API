@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const dotenv = require('dotenv');
+const path = require('path');
 
 const mailboxRouter = require('./routes/mailboxRoutes');
 const emailRouter = require('./routes/emailRoutes');
@@ -10,12 +11,13 @@ const templateRouter = require('./routes/templateRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-dotenv.config({path: '.env'})
+dotenv.config({path: path.resolve(__dirname, '../.env')})
+console.log(path.resolve(__dirname, '../.env'))
 
 app.use(bodyParser.json());
 
-app.use('/api/mailboxes', mailboxRouter);
 app.use('/api/emails', emailRouter);
+app.use('/api/mailboxes', mailboxRouter);
 app.use('/api/templates', templateRouter);
 
 
@@ -28,18 +30,18 @@ db.sequelize.authenticate().then(() => {
 });
 
 
-db.sequelize.sync()
-    .then(() => {
-        console.log('Synced db.');
-    })
-    .catch((err) => {
-        console.log('Failed to sync db' + err);
-    })
+// db.sequelize.sync()
+//     .then(() => {
+//         console.log('Synced db.');
+//     })
+//     .catch((err) => {
+//         console.log('Failed to sync db' + err);
+//     })
 
-db.sequelize.sync({force: true}).then(() => {
-    console.log('Drop and resync db.');
-
-});
+// db.sequelize.sync({force: true}).then(() => {
+//     console.log('Drop and resync db.');
+//
+// });
 
 
 app.listen(PORT, () => {

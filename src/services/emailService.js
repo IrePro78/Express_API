@@ -1,24 +1,23 @@
 const Email = require('../database/email');
 
-
 const getAllEmails = () => {
     return Email.getAllEmails();
 };
 
-const getOneEmail = () => {
-    return Email.getOneEmail();
+const getOneEmail = (req, res) => {
+    return Email.getOneEmail(req, res);
 };
 
-const createNewEmail = () => {
-    return Email.createNewEmail();
+const createNewEmail = (req, res) => {
+    return Email.createNewEmail(req, res);
 };
 
-const updateOneEmail = () => {
-    return Email.updateOneEmail();
+const updateOneEmail = (req, res) => {
+    return Email.updateOneEmail(req, res);
 };
 
-const deleteOneEmail = () => {
-    return Email.deleteOneEmail();
+const deleteOneEmail = (req, res) => {
+    return Email.deleteOneEmail(req, res);
 };
 
 module.exports = {

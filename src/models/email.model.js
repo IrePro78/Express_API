@@ -1,7 +1,7 @@
 const { DataTypes, Sequelize } = require("sequelize");
 
 module.exports = (sequelize) => {
-    const Email = sequelize.define("email", {
+    return sequelize.define("email", {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
@@ -33,5 +33,4 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING
         }
     });
-    return Email;
 };
