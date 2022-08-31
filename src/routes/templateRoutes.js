@@ -4,12 +4,12 @@ const templateRouter = express.Router();
 
 templateRouter.get("/", templateController.getAllTemplates);
 
-templateRouter.get("/:mailboxId", templateController.getOneTemplate );
+templateRouter.get("/:templateId", templateController.getOneTemplate );
 
 templateRouter.post("/", templateController.createNewTemplate);
 
-templateRouter.patch("/:mailboxId", templateController.updateOneTemplate);
+templateRouter.patch("/:templateId", templateController.updateOneTemplate);
 
-templateRouter.delete("/:mailboxId", templateController.deleteOneTemplate);
+templateRouter.delete("/:templateId", templateController.deleteOneTemplate);
 
 module.exports = templateRouter;

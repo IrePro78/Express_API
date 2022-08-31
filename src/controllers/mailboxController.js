@@ -1,30 +1,26 @@
 const mailboxService = require('../services/mailboxService');
 
-const getAllMailboxes = (req, res) => {
-    const allMailboxes = mailboxService.getAllMailboxes();
+exports.getAllMailboxes = async (req, res) => {
+    const allMailboxes = await mailboxService.getAllMailboxes();
     res.send(allMailboxes);
 };
 
-const getOneMailbox = (req, res) => {
-    res.send("Get an existing mailbox");
+exports.getOneMailbox = async (req, res) => {
+    const mailbox = await mailboxService.getOneMailbox(req, res);
+    res.send(mailbox);
 };
 
-const createNewMailbox = (req, res) => {
-    res.send("Create a new mailbox");
+exports.createNewMailbox = async (req, res) => {
+    const createMailbox = await mailboxService.createNewMailbox(req, res);
+    res.send(createMailbox);
 };
 
-const updateOneMailbox = (req, res) => {
-    res.send("Update an existing mailbox");
+exports.updateOneMailbox = async (req, res) => {
+    const updateMailbox = await mailboxService.updateOneMailbox(req, res);
+    res.send(updateMailbox);
 };
 
-const deleteOneMailbox = (req, res) => {
-    res.send("Delete an existing mailbox");
-};
-
-module.exports = {
-    getAllMailboxes,
-    getOneMailbox,
-    createNewMailbox,
-    updateOneMailbox,
-    deleteOneMailbox,
+exports.deleteOneMailbox = async (req, res) => {
+    const deleteMailbox = await mailboxService.deleteOneMailbox(req, res);
+    res.status(204).send(deleteMailbox);
 };

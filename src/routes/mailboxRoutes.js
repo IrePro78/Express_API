@@ -3,18 +3,15 @@ const mailboxController = require("../controllers/mailboxController");
 const mailboxRouter = express.Router();
 
 
-
-
 mailboxRouter.get("/", mailboxController.getAllMailboxes);
 
 mailboxRouter.get("/:mailboxId", mailboxController.getAllMailboxes);
 
 mailboxRouter.post("/", mailboxController.createNewMailbox);
 
-mailboxRouter.patch("/:emailId", mailboxController.updateOneMailbox);
+mailboxRouter.patch("/:mailboxId", mailboxController.updateOneMailbox);
 
-mailboxRouter.delete("/:emailId", mailboxController.deleteOneMailbox);
-
+mailboxRouter.delete("/:mailboxId", mailboxController.deleteOneMailbox);
 
 
 module.exports = mailboxRouter;

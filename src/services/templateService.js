@@ -1,29 +1,21 @@
 const Templates = require('../database/template');
 
-const getAllTemplates = () => {
+exports.getAllTemplates = () => {
     return Templates.getAllTemplates();
 };
 
-const getOneTemplate = () => {
-    return Templates.getOneTemplate();
+exports.getOneTemplate = (req, res) => {
+    return Templates.getOneTemplate(req, res);
 };
 
-const createNewTemplate = () => {
-    return Templates.createNewTemplate();
+exports.createNewTemplate = (req, res) => {
+    return Templates.createNewTemplate(req, res);
 };
 
-const updateOneTemplate = () => {
-    return Templates.updateOneTemplate();
+exports.updateOneTemplate = (req, res) => {
+    return Templates.updateOneTemplate(req, res);
 };
 
-const deleteOneTemplate = () => {
-    return Templates.deleteOneTemplate();
+exports.deleteOneTemplate = (req, res) => {
+    return Templates.deleteOneTemplate(req, res);
 };
-
-module.exports = {
-    getAllTemplates,
-    getOneTemplate,
-    createNewTemplate,
-    updateOneTemplate,
-    deleteOneTemplate,
-}

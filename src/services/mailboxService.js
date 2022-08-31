@@ -1,29 +1,21 @@
 const Mailboxes = require('../database/mailbox');
 
-const getAllMailboxes = () => {
+exports.getAllMailboxes = () => {
     return Mailboxes.getAllMailboxes();
 };
 
-const getOneMailbox = () => {
-    return Mailboxes.getOneMailbox();
+exports.getOneMailbox = (req, res) => {
+    return Mailboxes.getOneMailbox(req, res);
 };
 
-const createNewMailbox = () => {
-    return Mailboxes.createNewMailbox();
+exports.createNewMailbox = (req, res) => {
+    return Mailboxes.createNewMailbox(req, res);
 };
 
-const updateOneMailbox = () => {
-    return Mailboxes.updateOneMailbox();
+exports.updateOneMailbox = (req, res) => {
+    return Mailboxes.updateOneMailbox(req, res);
 };
 
-const deleteOneMailbox = () => {
-    return Mailboxes.deleteOneMailbox();
+exports.deleteOneMailbox = (req, res) => {
+    return Mailboxes.deleteOneMailbox(req, res);
 };
-
-module.exports = {
-    getAllMailboxes,
-    getOneMailbox,
-    createNewMailbox,
-    updateOneMailbox,
-    deleteOneMailbox,
-}

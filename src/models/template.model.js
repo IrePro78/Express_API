@@ -1,46 +1,31 @@
 const { DataTypes, Sequelize } = require("sequelize");
 
 module.exports = (sequelize) => {
-    const email = sequelize.define("email", {
+    return sequelize.define("template", {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             allowNull: false,
             primaryKey: true,
         },
-        mailbox: {
+        subject: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        template: {
+        text: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        to: {
-            type: DataTypes.JSON,
-            allowNull: false,
-        },
-        cc: {
-            type: DataTypes.JSON
-        },
-        bcc: {
-            type: DataTypes.JSON
-        },
-        reply_to: {
-            type: DataTypes.STRING,
-            validate: {
-                isEmail: true
-            }
-        },
-        sent_date: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW
+        attachment: {
+            type: DataTypes.STRING
         },
         date: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
-
+        },
+        last_update: {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW
         }
     });
-    return email;
 };

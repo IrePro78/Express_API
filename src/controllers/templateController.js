@@ -1,30 +1,27 @@
 const templateService = require('../services/templateService');
 
-const getAllTemplates = (req, res) => {
-    const allTemplates = templateService.getAllTemplates()
+exports.getAllTemplates = async (req, res) => {
+    const allTemplates = await templateService.getAllTemplates()
     res.send(allTemplates);
 };
 
-const getOneTemplate = (req, res) => {
-    res.send("Get an existing template");
+exports.getOneTemplate = async (req, res) => {
+    const template = await templateService.getOneTemplate(req, res);
+    res.send(template);
 };
 
-const createNewTemplate = (req, res) => {
-    res.send("Create a new template");
+exports.createNewTemplate = async (req, res) => {
+    const createTemplate = await templateService.createNewTemplate(req, res);
+    res.send(createTemplate);
 };
 
-const updateOneTemplate = (req, res) => {
-    res.send("Update an existing template");
+exports.updateOneTemplate = async (req, res) => {
+    const updateTemplate = await templateService.updateOneTemplate(req, res);
+    res.send(updateTemplate);
 };
 
-const deleteOneTemplate = (req, res) => {
-    res.send("Delete an existing template");
+exports.deleteOneTemplate = async (req, res) => {
+    const deleteTemplate = await templateService.deleteOneTemplate(req, res);
+    res.send(deleteTemplate);
 };
 
-module.exports = {
-    getAllTemplates,
-    getOneTemplate,
-    createNewTemplate,
-    updateOneTemplate,
-    deleteOneTemplate,
-};

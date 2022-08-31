@@ -1,26 +1,35 @@
-// const DB = require('./db.json');
+const DB = require('../models');
+const Mailbox = DB.mailboxes;
 
-const getAllMailboxes = () => {
-        return DB.mailboxes;
-};
-const getOneMailbox = () => {
-        return DB.mailboxes;
-}
-const createNewMailbox = () => {
-        return DB.mailboxes;
-}
-const updateOneMailbox = () => {
-        return DB.mailboxes;
-}
-const deleteOneMailbox = () => {
-        return DB.mailboxes;
-}
+exports.getAllMailboxes = () => {
+        return Mailbox.findAll();
 
-module.exports =
-    {
-        getAllMailboxes,
-        getOneMailbox,
-        createNewMailbox,
-        updateOneMailbox,
-        deleteOneMailbox
-    };
+}
+exports.getOneMailbox = (req, res) => {
+        const {mailboxId} = req.params;
+        return Mailbox.findByPk(mailboxId);
+
+}
+exports.createNewMailbox = (req, res) => {
+        const mailbox = {
+                host: req.body.host,
+                port: req.body.port,
+                login: req.body.login,
+                password: req.body.password,
+                email_from: req.body.email_from,
+                use_ssl: req.body.use_ssl,
+                is_active: req.body.is_active,
+                date: req.body.date,
+                last_update: req.body.last_update
+        }
+        return Mailbox.create(mailbox);
+}
+exports.updateOneMailbox = (req, res) => {
+        const {mailboxId} = req.params;
+        return Mailbox.upsert({id: mailboxId, ...req.body});
+
+}
+exports.deleteOneMailbox = (req, res) => {
+        const {mailboxId} = req.params;
+        return Mailbox.destroy({where: {id:mailboxId}});
+}
