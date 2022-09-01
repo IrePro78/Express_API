@@ -31,9 +31,10 @@ db.emails = require('./email.model.js')(sequelize, Sequelize,);
 db.mailboxes = require('./mailbox.model.js')(sequelize, Sequelize,);
 db.templates = require('./template.model.js')(sequelize, Sequelize,);
 
-db.emails.belongsTo(db.mailboxes, {foreignKey: 'mailbox', as: 'Mailbox'});
-db.mailboxes.hasMany(db.emails, {as: 'emails'});
+db.emails.belongsTo(db.mailboxes, {foreignKey: 'mailboxId', as: 'mailbox'});
+// db.mailboxes.hasMany(db.emails);
 
-db.emails.belongsTo(db.templates, {foreignKey: 'template', as: 'Template'});
-db.templates.hasMany(db.emails, {as: 'emails'});
+db.emails.belongsTo(db.templates);
+// db.templates.hasMany(db.emails);
+
 module.exports = db;
