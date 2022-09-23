@@ -16,7 +16,7 @@ exports.updateOneEmail = (req, res) => {
     return Email.updateOneEmail(req, res);
 };
 
-exports.deleteOneEmail = (req, res) => {
-    return Email.deleteOneEmail(req, res);
+exports.deleteOneEmail = async (req, res) => {
+    return await Email.deleteOneEmail(req, res);
 };
 

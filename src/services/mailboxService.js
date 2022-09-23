@@ -16,6 +16,6 @@ exports.updateOneMailbox = (req, res) => {
     return Mailboxes.updateOneMailbox(req, res);
 };
 
-exports.deleteOneMailbox = (req, res) => {
-    return Mailboxes.deleteOneMailbox(req, res);
+exports.deleteOneMailbox = async (req, res) => {
+    return await Mailboxes.deleteOneMailbox(req, res);
 };

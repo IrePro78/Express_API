@@ -1,6 +1,6 @@
-const {DataTypes, Sequelize} = require("sequelize");
 
-module.exports = (sequelize) => {
+
+module.exports = (sequelize, DataTypes) => {
     return sequelize.define("email", {
             id: {
                 type: DataTypes.UUID,
@@ -8,14 +8,6 @@ module.exports = (sequelize) => {
                 allowNull: false,
                 primaryKey: true,
             },
-            // mailboxId: {
-            //     type: DataTypes.STRING,
-            //     allowNull: false,
-            // },
-            // templateId: {
-            //     type: DataTypes.STRING,
-            //     allowNull: false,
-            // },
             to: {
                 type: DataTypes.JSON,
                 allowNull: false,

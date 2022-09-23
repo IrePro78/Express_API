@@ -1,6 +1,5 @@
-const {DataTypes, Sequelize} = require("sequelize");
 
-module.exports = (sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     return sequelize.define("mailbox", {
             id: {
                 type: DataTypes.UUID,

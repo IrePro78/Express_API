@@ -20,7 +20,9 @@ exports.updateOneEmail = async (req, res) => {
     res.send(updateEmail);
 };
 
-exports.deleteOneEmail = (req, res) => {
-    const deletedEmail = emailService.deleteOneEmail(req, res);
-    res.status(204).send(deletedEmail);
+exports.deleteOneEmail = async (req, res) => {
+    const deletedEmail = await emailService.deleteOneEmail(req, res);
+    console.log(deletedEmail)
+    res.status(204).send({status: 'Deleted', deletedEmail});
+    // res.send({ status: "OK", data: updatedWorkout });
 };

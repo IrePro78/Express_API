@@ -5,7 +5,7 @@ const mailboxRouter = express.Router();
 
 mailboxRouter.get("/", mailboxController.getAllMailboxes);
 
-mailboxRouter.get("/:mailboxId", mailboxController.getAllMailboxes);
+mailboxRouter.get("/:mailboxId", mailboxController.getOneMailbox);
 
 mailboxRouter.post("/", mailboxController.createNewMailbox);
 

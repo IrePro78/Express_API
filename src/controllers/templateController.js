@@ -1,4 +1,5 @@
 const templateService = require('../services/templateService');
+const asyncHandler = require('express-async-handler')
 
 exports.getAllTemplates = async (req, res) => {
     const allTemplates = await templateService.getAllTemplates()
@@ -20,8 +21,9 @@ exports.updateOneTemplate = async (req, res) => {
     res.send(updateTemplate);
 };
 
-exports.deleteOneTemplate = async (req, res) => {
+exports.deleteOneTemplate = asyncHandler(async (req, res) => {
     const deleteTemplate = await templateService.deleteOneTemplate(req, res);
-    res.send(deleteTemplate);
-};
+    console.log(deleteTemplate)
+    res.status(204).send({status: 'Deleted', deleteTemplate});
+});
 

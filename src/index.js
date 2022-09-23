@@ -37,7 +37,7 @@ db.sequelize.sync()
     .catch((err) => {
         console.log('Failed to sync db' + err);
     })
-
+//
 // db.sequelize.sync({force: true}).then(() => {
 //     console.log('Drop and resync db.');
 //

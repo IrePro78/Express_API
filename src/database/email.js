@@ -7,13 +7,15 @@ exports.getAllEmails = () => {
 }
 exports.getOneEmail = (req, res) => {
     const {emailId} = req.params;
-    return Email.findByPk(emailId);
+    return Email.findByPk(emailId, {
+        include: [DB.mailboxes, DB.templates]
+    });
 
 }
 exports.createNewEmail = (req, res) => {
     const email = {
-        mailbox: req.body.mailbox,
-        template: req.body.template,
+        mailboxId: req.body.mailboxId,
+        templateId: req.body.templateId,
         to: req.body.to,
         cc: req.body.cc,
         bcc: req.body.bcc,
@@ -30,6 +32,6 @@ exports.updateOneEmail = (req, res) => {
 }
 exports.deleteOneEmail = (req, res) => {
     const {emailId} = req.params;
-    return Email.destroy({where: {id:emailId}});
+    return Email.destroy({where: {id: emailId}});
 }
 

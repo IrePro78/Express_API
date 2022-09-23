@@ -16,6 +16,6 @@ exports.updateOneTemplate = (req, res) => {
     return Templates.updateOneTemplate(req, res);
 };
 
-exports.deleteOneTemplate = (req, res) => {
-    return Templates.deleteOneTemplate(req, res);
+exports.deleteOneTemplate = async (req, res) => {
+    return await Templates.deleteOneTemplate(req, res);
 };

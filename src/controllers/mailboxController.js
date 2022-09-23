@@ -22,5 +22,6 @@ exports.updateOneMailbox = async (req, res) => {
 
 exports.deleteOneMailbox = async (req, res) => {
     const deleteMailbox = await mailboxService.deleteOneMailbox(req, res);
+    console.log(deleteMailbox)
     res.status(204).send(deleteMailbox);
 };
