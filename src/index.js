@@ -1,11 +1,12 @@
 const express = require("express");
+require('express-async-errors');
 const bodyParser = require("body-parser");
 const dotenv = require('dotenv');
 const path = require('path');
-
-const mailboxRouter = require('./routes/mailboxRoutes');
-const emailRouter = require('./routes/emailRoutes');
-const templateRouter = require('./routes/templateRoutes');
+const { handleError } = require('./utils/errors');
+const mailboxRouter = require('./routes/mailbox.routes');
+const emailRouter = require('./routes/email.routes');
+const templateRouter = require('./routes/template.routes');
 
 
 const app = express();
@@ -43,6 +44,7 @@ db.sequelize.sync()
 //
 // });
 
+app.use(handleError);
 
 app.listen(PORT, () => {
     console.log(`API is listening on port ${PORT}`);
