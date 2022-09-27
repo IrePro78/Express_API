@@ -1,16 +1,20 @@
-class ValidationError extends Error {}
+class ValidationError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'ValidationError'
+    }
+}
 
 const handleError = (err, req, res, next) => {
     console.error(err);
-
     res
         .status(err instanceof ValidationError ? 400 : 500)
-        .send('error', {
-            message:  ValidationError ? err.message : 'Przepraszamy, spróbuj ponownie za kilka minut.',
+        .json('error', {
+            message: err instanceof ValidationError ? err.message : 'Something went wrong, please try again.',
         });
 };
 
 module.exports = {
+    handleError,
     ValidationError,
-    handleError
-};
+}

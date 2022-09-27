@@ -13,7 +13,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 dotenv.config({path: path.resolve(__dirname, '../.env')})
-console.log(path.resolve(__dirname, '../.env'))
 
 app.use(bodyParser.json());
 
@@ -21,6 +20,7 @@ app.use('/api/emails', emailRouter);
 app.use('/api/mailboxes', mailboxRouter);
 app.use('/api/templates', templateRouter);
 
+app.use(handleError);
 
 const db = require('./models');
 
@@ -43,8 +43,6 @@ db.sequelize.sync()
 //     console.log('Drop and resync db.');
 //
 // });
-
-app.use(handleError);
 
 app.listen(PORT, () => {
     console.log(`API is listening on port ${PORT}`);

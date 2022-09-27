@@ -1,27 +1,28 @@
 const emailService = require('../services/email.service')
-const { body, validationResult } = require('express-validator');
-const {ValidationError} = require('../utils/errors');
-
+// const { body, validationResult } = require('express-validator');
+// const {ValidationError} = require('../utils/errors');
 
 
 exports.getAllEmails = async (req, res) => {
     const allEmails = await emailService.getAllEmails();
-    res.send(allEmails);
+    res.status(200).send(allEmails);
 };
 
-exports.getOneEmail =async (req, res) => {
+exports.getOneEmail = async (req, res) => {
+
     const {emailId} = req.params;
     const email = await emailService.getOneEmail(emailId);
     res.status(200).send(email);
+
 };
 
 exports.createNewEmail = async (req, res) => {
-    const { body } = req;
+    const {body} = req;
     if (!body.mailboxId ||
         !body.templateId ||
         !body.to
     ) {
-        throw new ValidationError('Error');
+
     }
     const newEmail = {
         mailboxId: body.mailboxId,
