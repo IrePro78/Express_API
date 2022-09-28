@@ -1,15 +1,37 @@
 class ValidationError extends Error {
-    constructor(message) {
-        super(message);
-        this.name = 'ValidationError'
-    }
+}
+
+// class PropertyRequiredError extends ValidationError {
+//
+// }
+
+class NotFoundError extends Error {
 }
 
 const handleError = (err, req, res, next) => {
     console.error(err);
+
+    if (err instanceof NotFoundError) {
+        res
+            .status(404)
+            .json({
+                error: true,
+                message: err.message || 'Selected ID doesnt exist.'
+            })
+        return;
+    }
+    // if (err instanceof PropertyRequiredError) {
+    //     res
+    //         .status(400)
+    //         .json({
+    //             error: true,
+    //             message: err.message || 'QQQQQQQQQQ'
+    //         })
+    // }
+
     res
         .status(err instanceof ValidationError ? 400 : 500)
-        .json('error', {
+        .json({error: true,
             message: err instanceof ValidationError ? err.message : 'Something went wrong, please try again.',
         });
 };
@@ -17,4 +39,5 @@ const handleError = (err, req, res, next) => {
 module.exports = {
     handleError,
     ValidationError,
+    NotFoundError,
 }

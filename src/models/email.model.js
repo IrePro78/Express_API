@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
                 validate: {
                     isEmail: true
+
                 }
             },
             cc: {
@@ -30,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
             reply_to: {
                 type: DataTypes.STRING,
                 validate: {
-                    isEmail: true
+                    isEmail: true,
                 }
             },
         },
