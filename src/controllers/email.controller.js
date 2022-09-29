@@ -1,6 +1,6 @@
 const emailService = require('../services/email.service')
 // const { body, validationResult } = require('express-validator');
-const {ValidationError, NotFoundError} = require('../utils/errors');
+const {ValidationError, NotFoundError} = require('../middlewares/errors');
 
 
 exports.getAllEmails = async (req, res) => {

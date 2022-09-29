@@ -20,15 +20,6 @@ const handleError = (err, req, res, next) => {
             })
         return;
     }
-    // if (err instanceof PropertyRequiredError) {
-    //     res
-    //         .status(400)
-    //         .json({
-    //             error: true,
-    //             message: err.message || 'QQQQQQQQQQ'
-    //         })
-    // }
-
     res
         .status(err instanceof ValidationError ? 400 : 500)
         .json({error: true,

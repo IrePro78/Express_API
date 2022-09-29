@@ -3,7 +3,7 @@ require('express-async-errors');
 const bodyParser = require("body-parser");
 const dotenv = require('dotenv');
 const path = require('path');
-const { handleError } = require('./utils/errors');
+const { handleError } = require('./middlewares/errors');
 const mailboxRouter = require('./routes/mailbox.routes');
 const emailRouter = require('./routes/email.routes');
 const templateRouter = require('./routes/template.routes');
@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 3000;
 dotenv.config({path: path.resolve(__dirname, '../.env')})
 
 app.use(bodyParser.json());
+
 
 app.use('/api/emails', emailRouter);
 app.use('/api/mailboxes', mailboxRouter);

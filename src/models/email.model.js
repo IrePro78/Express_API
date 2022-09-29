@@ -12,21 +12,21 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.JSON,
                 allowNull: false,
                 validate: {
-                    isEmail: true
-
+                    notEmpty: true,
                 }
             },
             cc: {
                 type: DataTypes.JSON,
                 validate: {
-                    isEmail: true
+                    notEmpty: true,
                 }
             },
             bcc: {
                 type: DataTypes.JSON,
                 validate: {
-                    isEmail: true
+                    notEmpty: true,
                 }
+
             },
             reply_to: {
                 type: DataTypes.STRING,
