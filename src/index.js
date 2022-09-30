@@ -1,5 +1,4 @@
 const express = require("express");
-require('express-async-errors');
 const bodyParser = require("body-parser");
 const dotenv = require('dotenv');
 const path = require('path');
@@ -21,7 +20,9 @@ app.use('/api/emails', emailRouter);
 app.use('/api/mailboxes', mailboxRouter);
 app.use('/api/templates', templateRouter);
 
+
 app.use(handleError);
+
 
 const db = require('./models');
 

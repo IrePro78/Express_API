@@ -1,12 +1,11 @@
-class ValidationError extends Error {
-}
+import sequelizePackage from 'sequelize';
 
-// class PropertyRequiredError extends ValidationError {
-//
-// }
+const { ValidationError, DatabaseError } = sequelizePackage;
+
 
 class NotFoundError extends Error {
 }
+
 
 const handleError = (err, req, res, next) => {
     console.error(err);
@@ -21,14 +20,13 @@ const handleError = (err, req, res, next) => {
         return;
     }
     res
-        .status(err instanceof ValidationError ? 400 : 500)
-        .json({error: true,
-            message: err instanceof ValidationError ? err.message : 'Something went wrong, please try again.',
+        .status(err.status || 500)
+        .json({error: err.status || 500,
+            message: err.message
         });
 };
 
 module.exports = {
     handleError,
-    ValidationError,
     NotFoundError,
 }

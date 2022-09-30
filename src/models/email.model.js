@@ -17,19 +17,22 @@ module.exports = (sequelize, DataTypes) => {
             },
             cc: {
                 type: DataTypes.JSON,
+                allowNull: false,
                 validate: {
-                    notEmpty: true,
+                    notEmpty: false,
                 }
             },
             bcc: {
                 type: DataTypes.JSON,
+                allowNull: false,
                 validate: {
-                    notEmpty: true,
+                    notEmpty: false,
                 }
 
             },
             reply_to: {
                 type: DataTypes.STRING,
+                allowNull: true,
                 validate: {
                     isEmail: true,
                 }

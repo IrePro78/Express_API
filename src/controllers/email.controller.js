@@ -1,6 +1,5 @@
 const emailService = require('../services/email.service')
-// const { body, validationResult } = require('express-validator');
-const {ValidationError, NotFoundError} = require('../middlewares/errors');
+
 
 
 exports.getAllEmails = async (req, res) => {
@@ -32,21 +31,31 @@ exports.createNewEmail = async (req, res, next) => {
         date: body.date
     };
     try {
-        const createEmail = await emailService.createNewEmail(newEmail);
-        res.status(201).send(createEmail);
+    const createEmail = await emailService.createNewEmail(newEmail);
+    res.status(201).send(createEmail);
     } catch (err) {
         next(err);
     }
 };
 
-exports.updateOneEmail = async (req, res) => {
-    const {emailId} = req.params;
-    const updateEmail = await emailService.updateOneEmail({id: emailId, ...req.body});
-    res.send(updateEmail);
+exports.updateOneEmail = async (req, res, next) => {
+    try {
+        const {emailId} = req.params;
+        const updateEmail = await emailService.updateOneEmail({id: emailId, ...req.body});
+        res.send(updateEmail);
+    } catch (err) {
+        next(err);
+    }
+
 };
 
-exports.deleteOneEmail = async (req, res) => {
-    const {emailId} = req.params;
-    const deletedEmail = await emailService.deleteOneEmail(emailId);
-    res.status(204).send({status: 'Deleted', deletedEmail});
+exports.deleteOneEmail = async (req, res, next) => {
+    try {
+        const {emailId} = req.params;
+        const deletedEmail = await emailService.deleteOneEmail(emailId);
+        res.status(204).send({status: 'Deleted', deletedEmail});
+    } catch (err) {
+        next(err);
+    }
+
 };
