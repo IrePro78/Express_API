@@ -2,14 +2,28 @@ const emailService = require('../services/email.service')
 
 
 
-exports.getAllEmails = async (req, res) => {
-    const allEmails = await emailService.getAllEmails();
-    res.status(200).send(allEmails);
+exports.getAllEmails = async (req, res, next) => {
+    try {
+        const allEmails = await emailService.getAllEmails();
+        res.status(200).send(allEmails);
+    } catch (err) {
+        next(err)
+    }
+
 };
 
 exports.getOneEmail = async (req, res, next) => {
+
+    const {emailId} = req.params;
+    if (!emailId) {
+        res
+            .status(400)
+            .send({
+                status: "FAILED",
+                data: { error: "Parameter ':workoutId' can not be empty" },
+            });
+    }
     try {
-        const {emailId} = req.params;
         const email = await emailService.getOneEmail(emailId);
         res.status(200).send(email);
     } catch (err) {

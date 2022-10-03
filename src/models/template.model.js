@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         {
             timestamps: true,
             createdAt: 'date',
-            updatedAt: 'sent_date',
+            updatedAt: 'last_update',
         }
     );
 };

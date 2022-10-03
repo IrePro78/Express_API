@@ -1,11 +1,10 @@
-import sequelizePackage from 'sequelize';
+// const sequelizePackage = require('sequelize');
 
-const { ValidationError, DatabaseError } = sequelizePackage;
+// const { ValidationError, DatabaseError } = sequelizePackage;
 
 
 class NotFoundError extends Error {
 }
-
 
 const handleError = (err, req, res, next) => {
     console.error(err);

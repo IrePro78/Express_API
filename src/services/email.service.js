@@ -23,7 +23,6 @@ exports.updateOneEmail = async (obj) => {
 
 exports.deleteOneEmail = async (emailId) => {
     const email = await Email.deleteOneEmail(emailId);
-    console.log(email)
     if (!email) {
         throw new NotFoundError();
     }

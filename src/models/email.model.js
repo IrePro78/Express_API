@@ -1,5 +1,3 @@
-
-
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define("email", {
             id: {
@@ -11,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
             to: {
                 type: DataTypes.JSON,
                 allowNull: false,
+                defaultValue: [],
                 validate: {
                     notEmpty: true,
                 }
@@ -18,17 +17,12 @@ module.exports = (sequelize, DataTypes) => {
             cc: {
                 type: DataTypes.JSON,
                 allowNull: false,
-                validate: {
-                    notEmpty: false,
-                }
+                defaultValue: [],
             },
             bcc: {
                 type: DataTypes.JSON,
                 allowNull: false,
-                validate: {
-                    notEmpty: false,
-                }
-
+                defaultValue: [],
             },
             reply_to: {
                 type: DataTypes.STRING,

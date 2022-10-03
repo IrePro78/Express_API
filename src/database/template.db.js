@@ -7,7 +7,9 @@ exports.getAllTemplates = () => {
 }
 
 exports.getOneTemplate = (templateId) => {
-    return Template.findByPk(templateId);
+    return Template.findByPk(templateId, {
+        include: db.emails
+    });
 }
 
 exports.createNewTemplate = (newTemplate) => {

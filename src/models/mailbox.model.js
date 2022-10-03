@@ -8,31 +8,47 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
             },
             host: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                allowNull: false,
             },
             port: {
-                type: DataTypes.INTEGER
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                defaultValue: 465,
+
             },
             login: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                allowNull: false,
+
             },
             password: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                allowNull: false,
             },
             email_from: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    isEmail: true,
+                }
             },
             use_ssl: {
-                type: DataTypes.BOOLEAN
+                type: DataTypes.BOOLEAN,
+                allowNull: false,
+                defaultValue: true,
+
             },
             is_active: {
-                type: DataTypes.BOOLEAN
+                type: DataTypes.BOOLEAN,
+                defaultValue: false,
+
             },
         },
         {
             timestamps: true,
             createdAt: 'date',
-            updatedAt: 'sent_date',
+            updatedAt: 'last_update',
         }
     );
 };
