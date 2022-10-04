@@ -21,13 +21,16 @@ exports.getOneTemplate = async (req, res, next) => {
 };
 
 exports.createNewTemplate = async (req, res, next) => {
+    const path = req.files.map(file =>
+    `${req.protocol}://${req.get('host')}${req.baseUrl}/${file.destination}${file.filename}`);
+
     const newTemplate = {
         subject: req.body.subject,
         text: req.body.text,
-        attachment: req.body.attachment,
-        date: req.body.date,
-        last_update: req.body.last_update
+        attachment: path,
     };
+    console.log(newTemplate)
+    console.log(path)
     try {
         const createTemplate = await templateService.createNewTemplate(newTemplate);
         res.status(201).send(createTemplate);

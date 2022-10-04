@@ -10,7 +10,7 @@ mailboxRouter.get("/:mailboxId", mailboxController.getOneMailbox);
 
 mailboxRouter.post("/", Validator('mailbox'), mailboxController.createNewMailbox);
 
-mailboxRouter.patch("/:mailboxId", mailboxController.updateOneMailbox);
+mailboxRouter.patch("/:mailboxId", Validator('mailbox'), mailboxController.updateOneMailbox);
 
 mailboxRouter.delete("/:mailboxId", mailboxController.deleteOneMailbox);
 

@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const path = require('path');
 const { handleError } = require('./middlewares/errors');
@@ -11,10 +11,11 @@ const templateRouter = require('./routes/template.routes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
 dotenv.config({path: path.resolve(__dirname, '../.env')})
 
-app.use(bodyParser.json());
 
+app.use(express.json());
 
 app.use('/api/emails', emailRouter);
 app.use('/api/mailboxes', mailboxRouter);

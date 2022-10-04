@@ -16,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
             },
             attachment: {
-                type: DataTypes.STRING
+                type: DataTypes.JSON,
+                allowNull: true,
+                defaultValue: [],
             },
         },
         {
